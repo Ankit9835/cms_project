@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//use App\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,19 @@ Route::group(['middleware' => 'admin'],function(){
         'edit'=>'admin.users.edit'
     ]]);
 
+    Route::resource('admin/posts', 'AdminPostController',['names'=>[
+        'index'=>'admin.posts.index',
+        'create'=>'admin.posts.create',
+        'store'=>'admin.posts.store',
+        'edit'=>'admin.posts.edit'
+    ]]);
 
+
+});
+
+Route::get('/logout',function(){
+     Auth::logout();
+     return redirect('/');
 });
 
 

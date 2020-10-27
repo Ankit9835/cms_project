@@ -8,7 +8,11 @@
 
 
   
+@if(Session::has('user-delete'))
 
+   <p class = "bg-danger">  {{ session('user-delete') }} </p>
+
+@endif
 
     <h1>Users</h1>
 

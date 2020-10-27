@@ -8,6 +8,8 @@ use App\User;
 use App\Role;
 use App\Photo;
 use DB;
+use Session;
+use Auth;
 use App\Http\Requests\UsersRequest;
 use App\Http\Requests\UserEditRequest;
 
@@ -146,5 +148,10 @@ class AdminUserController extends Controller
     public function destroy($id)
     {
         //
+        $user = User::findOrFail($id);
+        unlink(public_path() . $user->photo->file);
+        $user->delete();
+        Session::flash('user-delete','User Has Been Deleted');
+        return redirect('/admin/users');
     }
 }

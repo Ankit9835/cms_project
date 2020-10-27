@@ -57,6 +57,15 @@ C/O https://placeholder.com/' }}" alt = "" class = "img-responsive img-rounded">
 
     {!! Form::close() !!}
 
+    {!! Form::open(['method' => 'DELETE', 'action' => ['AdminUserController@destroy',$user->id], 'files' => true]) !!}
+    @csrf
+
+        <button type = "submit" class = "btn btn-danger btn-block">  Delete User </button>
+
+    {!! Form::close() !!}
+
+
+
     </div>
 
     @if(count($errors) > 0)
